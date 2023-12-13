@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_form_sections form_id="a8aa7399db6dd700b723e536ca961993" sys_domain="global" table="x_avepo_cloud_gove_create_site_collection" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-04-18 03:26:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e0aaf399db6dd700b723e536ca961931</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_create_site_collection" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">a8aa7399db6dd700b723e536ca961993</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">aeb63f95db6dd700b723e536ca961988</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-04-18 03:26:37</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 03:54:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>465780cedbf9df00b723e536ca9619d3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_create_site_collection" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">a8aa7399db6dd700b723e536ca961993</sys_ui_form>
+            <sys_ui_section caption="Site Collection Settings" display_value="Site Collection Settings" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">c25780cedbf9df00b723e536ca9619d0</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 03:54:49</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 03:54:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ce57c0cedbf9df00b723e536ca96195f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_create_site_collection" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">a8aa7399db6dd700b723e536ca961993</sys_ui_form>
+            <sys_ui_section caption="Administrators and Contacts" display_value="Administrators and Contacts" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">8e5780cedbf9df00b723e536ca9619d0</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 03:54:49</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 03:54:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0a57c0cedbf9df00b723e536ca961963</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_create_site_collection" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">a8aa7399db6dd700b723e536ca961993</sys_ui_form>
+            <sys_ui_section caption="Site Collection Permisions" display_value="Site Collection Permisions" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">865780cedbf9df00b723e536ca9619d1</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 03:54:49</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 03:54:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c657c0cedbf9df00b723e536ca961967</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_create_site_collection" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">a8aa7399db6dd700b723e536ca961993</sys_ui_form>
+            <sys_ui_section caption="Site Collection Lifecycle" display_value="Site Collection Lifecycle" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">8e5780cedbf9df00b723e536ca9619d1</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-02 03:54:49</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-04 06:42:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>cff08baedbf91340379a6be3ca9619ba</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_create_site_collection" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">a8aa7399db6dd700b723e536ca961993</sys_ui_form>
+            <sys_ui_section caption="Metadata" display_value="Metadata" name="x_avepo_cloud_gove_create_site_collection" sys_domain="global" view="Default view">8ff08baedbf91340379a6be3ca9619b6</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-04 06:42:51</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_avepo_cloud_gove_create_site_collection</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-04-18 03:26:37</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a8aa7399db6dd700b723e536ca961993</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_avepo_cloud_gove_create_site_collection</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+            <sys_update_name>sys_ui_form_sections_a8aa7399db6dd700b723e536ca961993</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-04-18 03:26:37</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

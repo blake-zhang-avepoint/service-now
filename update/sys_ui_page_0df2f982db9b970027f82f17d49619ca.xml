@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_avepo_cloud_gove_ContactSupport.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<style>
+h1 {
+    font-size: 1.75rem;
+    margin: 1em 0;
+	font-weight: 1000;
+    line-height: 1.2
+}
+body {
+    margin: 0
+}
+.margin-top-l {
+    margin-top: 6.666rem
+}
+.margin-top-s {
+    margin-top: 2rem
+}
+body,h1,h2 {
+    font-family: Open Sans,Segoe UI,Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+h2 {
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2
+}
+.grid {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+}
+.grid-gutters-wide {
+    margin: -3rem 0 3rem 1rem
+}
+.grid-full .col {
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%
+}
+.grid-m .col {
+        -ms-flex: 1;
+        flex: 1
+}
+.heading-s {
+    font-size: 1.175rem
+}
+.heading-thin {
+    font-weight: 300
+}
+.contact-list {
+    margin-top: 1.5rem;
+    font-size: .9375rem
+}
+.contact-list p {
+    margin-top: .125rem
+}
+.contact-list span {
+    font-weight: 600
+}
+.margin-bottom-xs {
+    margin-bottom: 1rem
+}
+*,:after,:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+html {
+    font-size: 100%;
+    line-height: 1.6;
+    color: #4c5966
+}
+.btn {
+    display: block;
+    width: 100%;
+    padding: .875em 1em;
+    font-family: Open Sans,Segoe UI,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    transition: all .3s ease
+}
+.btn {
+        display:inline-block;
+        width: auto
+    }
+.btn-outline.btn-normal {
+    padding: .875rem
+}
+.btn-outline.btn-navy {
+    color: #4c5966;
+    background-color: none;
+    border: 2px solid #4c5966
+}
+.btn-outline.btn-navy:focus,.btn-outline.btn-navy:hover {
+    color: #fff;
+    background-color: #4c5966
+}
+.margin-top-xs {
+        margin-top:1.5rem
+    }
+.btn,.btn:focus,.btn:hover {
+    text-decoration: none;
+    cursor: pointer
+}
+a {
+    font-weight: 700;
+    text-decoration: none;
+    transition: all .2s ease;
+	margin-right: .5rem
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+	</style>
+<head>
+	<h1>AvePoint Product Support</h1>
+</head>
+<body>	
+	<div style="font-size: .9375rem"><p>Please note that AvePoint Product Support should only be used by your organization's IT support team.  Should you have specific questions about an AvePoint product or a ServiceNow request, please contact your internal IT support team first.  If further assistance is required, they can contact AvePoint support. </p></div>
+	<div class="margin-top-l">		
+				<div class="grid grid-gutters-wide grid-full grid-m">
+					<div class="col">
+						<div class="contact-container">
+							<div class="content">
+								<h2 class="heading heading-s heading-thin heading-teal">Phone support</h2>
+							</div>
+							<div class="contact-list">
+								<p class="margin-bottom-xs"><strong>During business hours</strong>: 7:00AM-7:00PM, Local Time</p>
+								<p><span>United States/Canada</span>: Toll free - <a href = "tel:+1.800.661.6588">+1.800.661.6588</a> (option 2)</p>
+								<p><span>Australia</span>: <a href = "tel:+61 3 9005 8484"> +61 3 9005 8484</a></p>
+								<p><span>United Kingdom</span>: <a href = "tel:+44 (0) 207 421 5199">+44 (0) 207 421 5199</a> (option 2)</p>
+								<p><span>Singapore</span>: <a href = "tel:+65-3163-2119">+65-3163-2119</a></p>
+								<p><span>Germany</span>: <a href = "tel:+49 800 3002340">+49 800 3002340</a></p>
+								<p><span>Austria</span>: <a href = "tel:+43 800 3002340">+43 800 3002340</a></p>
+								<p><span>Switzerland</span>: <a href = "tel:+41 800 3002340">+41 800 3002340</a></p>
+								<p><span>Other Worldwide</span>: <a href = "tel:+1.201.793.1111">+1.201.793.1111</a> (option 2)</p>
+							</div>
+							<div class="contact-list">
+								<p><strong>During off-hours*</strong>: 7:00PM-7:00AM, Local Time</p>
+								<p class="margin-bottom-xs"><em>*Only Premier Maintenance customers are entitled to 24/7 phone support</em></p>
+								<p><span>Main line</span>: <a href = "tel:+1.201.793.1111">+1.201.793.1111</a> (option 2)</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="contact-container">
+							<div class="content">
+								<h2 class="heading heading-s heading-thin  heading-teal">Web support</h2>
+							</div>
+							<div class="contact-list">
+								<p><a class="btn btn-normal btn-outline btn-navy margin-top-xs" href="https://www.avepoint.com/support/open-a-support-ticket/" target="_blank">Open support ticket</a> <a class="btn btn-normal btn-outline btn-navy margin-top-xs" href="https://www.avepoint.com/support/upload-logs/" target="_blank">Upload error logs</a></p>
+							</div>
+						</div>
+						<div class="contact-container margin-top-s">
+							<div class="content">
+								<h2 class="heading heading-s heading-thin  heading-teal">Email support</h2>
+							</div>
+							<div class="contact-list">
+								<p><span>Email support*: </span><a href="mailto:support@avepoint.com" title="Contact support">support@avepoint.com</a></p>
+								<p><em>*Email Message Service is only available for updates to already existing cases.</em></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+</j:jelly>]]></html>
+        <name>ContactSupport</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-07-16 02:40:18</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>0df2f982db9b970027f82f17d49619ca</sys_id>
+        <sys_mod_count>31</sys_mod_count>
+        <sys_name>ContactSupport</sys_name>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_ui_page_0df2f982db9b970027f82f17d49619ca</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-08-13 08:52:08</sys_updated_on>
+    </sys_ui_page>
+</record_update>

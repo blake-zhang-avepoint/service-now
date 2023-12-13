@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="x_avepo_cloud_gove_create_group">lease_type=0^EQ<item endquery="false" field="lease_type" goto="false" newquery="false" operator="=" or="false" value="0"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>true</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+	g_form.setDisplay('duration', false);
+	g_form.setDisplay('duration_type', false);
+	g_form.setDisplay('lease_date', true);
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+	g_form.setDisplay('duration', true);
+	g_form.setDisplay('duration_type', true);
+	g_form.setDisplay('lease_date', false);
+}]]></script_true>
+        <set_values/>
+        <short_description>Lifecycle type in create group service</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-31 03:31:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>257795d3db125300b723e536ca961911</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Lifecycle type in create group service</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_ui_policy_257795d3db125300b723e536ca961911</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-31 03:31:16</sys_updated_on>
+        <table>x_avepo_cloud_gove_create_group</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>

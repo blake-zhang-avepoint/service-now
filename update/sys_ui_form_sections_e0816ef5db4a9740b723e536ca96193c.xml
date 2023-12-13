@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_form_sections form_id="e0816ef5db4a9740b723e536ca96193c" sys_domain="global" table="x_avepo_cloud_gove_change_group_setting" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-14 06:45:35</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>28816ef5db4a9740b723e536ca96193e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_change_group_setting" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">e0816ef5db4a9740b723e536ca96193c</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">8570d231db4a9740b723e536ca961990</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-14 06:45:35</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-14 06:45:35</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e0816ef5db4a9740b723e536ca96193f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_change_group_setting" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">e0816ef5db4a9740b723e536ca96193c</sys_ui_form>
+            <sys_ui_section caption="Basic Settings" display_value="Basic Settings" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">e8816ef5db4a9740b723e536ca96193a</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-14 06:45:35</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-14 06:48:48</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fb322639db4a9740b723e536ca961972</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_change_group_setting" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">e0816ef5db4a9740b723e536ca96193c</sys_ui_form>
+            <sys_ui_section caption="Group Membership and Contacts" display_value="Group Membership and Contacts" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">fb322639db4a9740b723e536ca96196f</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-14 06:48:48</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-14 06:45:35</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a8816ef5db4a9740b723e536ca961942</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_avepo_cloud_gove_change_group_setting" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">e0816ef5db4a9740b723e536ca96193c</sys_ui_form>
+            <sys_ui_section caption="Metadata" display_value="Metadata" name="x_avepo_cloud_gove_change_group_setting" sys_domain="global" view="Default view">a4816ef5db4a9740b723e536ca96193b</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-14 06:48:48</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_avepo_cloud_gove_change_group_setting</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-14 06:45:35</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e0816ef5db4a9740b723e536ca96193c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_avepo_cloud_gove_change_group_setting</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+            <sys_update_name>sys_ui_form_sections_e0816ef5db4a9740b723e536ca96193c</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-05-14 06:45:35</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

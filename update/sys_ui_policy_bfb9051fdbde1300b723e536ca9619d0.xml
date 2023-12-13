@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="x_avepo_cloud_gove_change_sc_contact">change_method=url^EQ<item endquery="false" field="change_method" goto="false" newquery="false" operator="=" or="false" value="url"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>true</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+	g_form.setMandatory('sc_url', false);		
+	g_form.setMandatory('current_user', true);
+	g_form.setMandatory('new_user', true);
+	g_form.setMandatory('alternate_user', true);
+	g_form.setSectionDisplay('change_byurl', false);
+	g_form.setSectionDisplay('change_byuser', true);
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+	g_form.setMandatory('sc_url', true);		
+	g_form.setMandatory('current_user', false);
+	g_form.setMandatory('new_user', false);
+	g_form.setMandatory('alternate_user', false);
+	g_form.setSectionDisplay('change_byurl', true);
+	g_form.setSectionDisplay('change_byuser', false);
+}]]></script_true>
+        <set_values/>
+        <short_description>Change method in Change SC contact service</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-31 03:18:28</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>bfb9051fdbde1300b723e536ca9619d0</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Change method in Change SC contact service</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_ui_policy_bfb9051fdbde1300b723e536ca9619d0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-06-27 01:55:06</sys_updated_on>
+        <table>x_avepo_cloud_gove_change_sc_contact</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>
