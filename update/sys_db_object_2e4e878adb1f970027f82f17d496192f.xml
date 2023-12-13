@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>true</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>true</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>Service</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_avepo_cloud_gove_service</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <super_class/>
+        <sys_class_code/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_class_path/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-07-16 08:12:25</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>2e4e878adb1f970027f82f17d496192f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Service</sys_name>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_db_object_2e4e878adb1f970027f82f17d496192f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-03 05:58:23</sys_updated_on>
+        <update_access>true</update_access>
+        <user_role display_value="x_avepo_cloud_gove.request_user" name="x_avepo_cloud_gove.request_user">3103b3dddb2dd700b723e536ca9619b9</user_role>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+</record_update>
