@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_avepo_cloud_gove_request" label="Create Site Collection" max_length="40" name="x_avepo_cloud_gove_create_site_collection" type="collection">
+        <element attributes="edge_encryption_enabled=true" hint="Specify one or more users to be the additional site collection administrators of the new site collection." label="Additional Site Collection Administrators" max_length="1000" name="additional_admin" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Specify a AvePoint Cloud Management Deployment Manager plan. The Deployment Manager plan contains the LOB application or pattern that will be used to create the new site collection." label="Deployment Manager Plan" max_length="40" name="dpm" type="string">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Specify the language for the site collection." label="Language" max_length="40" name="language" type="choice">
+            <choice/>
+        </element>
+        <element hint=" A site collection lease period is the amount of time allotted whereby the site collection is available for use. A task will be assigned to the business user specified in the selected approval process asking if they would like to extend site collection lease or delete the site collection. " label="Site Collection Lease Period" max_length="40" name="lease_period" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="0" label="Unit of Lease Period" max_length="40" name="lease_unit" type="string">
+            <choice>
+                <element label="Day(s)" sequence="0" value="0"/>
+                <element label="Week(s)" sequence="1" value="1"/>
+                <element label="Month(s)" sequence="2" value="2"/>
+                <element label="Year(s)" sequence="3" value="3"/>
+            </choice>
+        </element>
+        <element hint="You can also specify lease expiration warning to configure when to send the warning e-mail before the site collection reaches expiration." label="Lease Expiration Warning Period" max_length="40" name="lease_warning" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Specify the desired URL for the new Site Collection by selecting the URL path" label="Managed Paths" mandatory="true" max_length="40" name="managed_paths" type="string">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Use this group to grant people contribute permissions to the SharePoint Online site." label="Members" max_length="2000" name="member_group" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" hint="Use this group to grant people full control permissions to the SharePoint Online site." label="Owners" max_length="2000" name="owner_group" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Select a Policy for this Site Collection." label="Site Collection Policy" max_length="40" name="policy" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify a user to be the primary site collection administrator of the new SharePoint Online site collection." label="Primary Site Collection Administrator" max_length="200" name="primary_admin" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" hint="Specify a user to be the primary site collection contact." label="Primary Site Collection Contact" max_length="200" name="sc_primary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" hint="Specify a user to be the secondary site collection contact." label="Secondary Site Collection Contact" max_length="200" name="sc_secondary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Admin Centers" max_length="100" name="sc_url" read_only="true" type="string"/>
+        <element attributes="ref_auto_completer=AJAXReferenceChoice,max_ref_dropdown=200" choice="1" choice_field="serviceid" choice_table="x_avepo_gao_service" label="Service" mandatory="true" max_length="32" name="service" reference="x_avepo_cloud_gove_service" reference_qual="inactive=false^service_type=1^EQ" reference_qual_condition="inactive=false^service_type=1^EQ" type="reference">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Enter an optional description for this new Site Collection." label="Site Description" max_length="2000" name="site_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Enter the desired Title for the new Site Collection you are requesting." label="Site Title" mandatory="true" max_length="200" name="site_title" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Select a Site Collection Template. Note that while many aspects of a site collection can be customized after its creation, the site collection template cannot be changed once the site collection is created." label="Template" max_length="100" name="template" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="39" hint="Select the time zone for site collections." label="Time Zone" max_length="40" name="time_zone" type="choice">
+            <choice>
+                <element label="(UTC-12:00) International Date Line West" sequence="0" value="39"/>
+                <element label="(UTC-11:00) Coordinated Universal Time-11" sequence="1" value="95"/>
+                <element label="(UTC-10:00) Hawaii" sequence="2" value="15"/>
+                <element label="(UTC-09:00) Alaska" sequence="3" value="14"/>
+                <element label="(UTC-08:00) Baja California" sequence="4" value="78"/>
+                <element label="(UTC-08:00) Pacific Time (US and Canada)" sequence="5" value="13"/>
+                <element label="(UTC-07:00) Arizona" sequence="6" value="38"/>
+                <element label="(UTC-07:00) Chihuahua, La Paz, Mazatlan" sequence="7" value="77"/>
+                <element label="(UTC-07:00) Mountain Time (US and Canada)" sequence="8" value="12"/>
+                <element label="(UTC-06:00) Central America" sequence="9" value="55"/>
+                <element label="(UTC-06:00) Central Time (US and Canada)" sequence="10" value="11"/>
+                <element label="(UTC-06:00) Guadalajara, Mexico City, Monterrey" sequence="11" value="37"/>
+                <element label="(UTC-06:00) Saskatchewan" sequence="12" value="36"/>
+                <element label="(UTC-05:00) Eastern Time (US and Canada)" sequence="14" value="10"/>
+                <element label="(UTC-05:00) Indiana (East)" sequence="21" value="34"/>
+                <element label="(UTC-04:30) Caracas" sequence="22" value="88"/>
+                <element label="(UTC-04:00) Asuncion" sequence="23" value="91"/>
+                <element label="(UTC-04:00) Atlantic Time (Canada)" sequence="24" value="9"/>
+                <element label="(UTC-04:00) Cuiaba" sequence="25" value="81"/>
+                <element label="(UTC-04:00) Georgetown, La Paz, Manaus, San Juan" sequence="26" value="33"/>
+                <element label="(UTC-04:00) Santiago" sequence="27" value="65"/>
+                <element label="(UTC-03:30) Newfoundland" sequence="28" value="28"/>
+                <element label="(UTC-03:00) Brasilia" sequence="29" value="8"/>
+                <element label="(UTC-03:00) Buenos Aires" sequence="30" value="85"/>
+                <element label="(UTC-03:00) Cayenne, Fortaleza" sequence="31" value="32"/>
+                <element label="(UTC-03:00) Greenland" sequence="32" value="60"/>
+                <element label="(UTC-03:00) Montevideo" sequence="33" value="90"/>
+                <element label="(UTC-03:00) Salvador" sequence="34" value="103"/>
+                <element label="(UTC-02:00) Coordinated Universal Time-02" sequence="35" value="96"/>
+                <element label="(UTC-02:00) Mid-Atlantic" sequence="36" value="30"/>
+                <element label="(UTC-01:00) Azores" sequence="37" value="29"/>
+                <element label="(UTC-01:00) Cabo Verde" sequence="38" value="53"/>
+                <element label="(UTC) Casablanca" sequence="39" value="86"/>
+                <element label="(UTC) Coordinated Universal Time" sequence="40" value="93"/>
+                <element label="(UTC) Dublin, Edinburgh, Lisbon, London" sequence="41" value="2"/>
+                <element label="(UTC) Monrovia, Reykjavik" sequence="42" value="31"/>
+                <element label="(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna" sequence="43" value="4"/>
+                <element label="(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague" sequence="44" value="6"/>
+                <element label="(UTC+01:00) Brussels, Copenhagen, Madrid, Paris" sequence="45" value="3"/>
+                <element label="(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb" sequence="46" value="57"/>
+                <element label="(UTC 01:00) West Central Africa" sequence="47" value="69"/>
+                <element label="(UTC 01:00) Windhoek" sequence="48" value="83"/>
+                <element label="(UTC 02:00) Amman" sequence="49" value="79"/>
+                <element label="(UTC+02:00) Athens, Bucharest, Istanbul" sequence="50" value="5"/>
+                <element label="(UTC 02:00) Beirut" sequence="51" value="80"/>
+                <element label="(UTC 02:00) Cairo" sequence="52" value="49"/>
+                <element label="(UTC 02:00) Damascus" sequence="53" value="98"/>
+                <element label="(UTC+02:00) Harare, Pretoria" sequence="54" value="50"/>
+                <element label="(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius" sequence="55" value="59"/>
+                <element label="(UTC 02:00) Istanbul" sequence="56" value="101"/>
+                <element label="(UTC 02:00) Jerusalem" sequence="57" value="27"/>
+                <element label="(UTC 02:00) Minsk (old)" sequence="58" value="7"/>
+                <element label="(UTC 02:00) E. Europe" sequence="59" value="104"/>
+                <element label="(UTC 02:00) Kaliningrad (RTZ 1)" sequence="60" value="100"/>
+                <element label="(UTC 03:00) Baghdad" sequence="61" value="26"/>
+                <element label="(UTC+03:00) Kuwait, Riyadh" sequence="62" value="74"/>
+                <element label="(UTC 03:00) Minsk" sequence="63" value="109"/>
+                <element label="(UTC+03:00) Moscow, St. Petersburg, Volgograd (RTZ 2)" sequence="64" value="51"/>
+                <element label="(UTC 03:00) Nairobi" sequence="65" value="56"/>
+                <element label="(UTC 03:30) Tehran" sequence="66" value="25"/>
+                <element label="(UTC+04:00) Abu Dhabi, Muscat" sequence="67" value="24"/>
+                <element label="(UTC 04:00) Baku" sequence="68" value="54"/>
+                <element label="(UTC+04:00) Izhevsk, Samara (RTZ 3)" sequence="69" value="106"/>
+                <element label="(UTC 04:00) Port Louis" sequence="70" value="89"/>
+                <element label="(UTC 04:00) Tbilisi" sequence="71" value="82"/>
+                <element label="(UTC 04:00) Yerevan" sequence="72" value="84"/>
+                <element label="(UTC 04:30) Kabul" sequence="73" value="48"/>
+                <element label="(UTC 05:00) Ekaterinburg (RTZ 4)" sequence="74" value="58"/>
+                <element label="(UTC+05:00) Islamabad, Karachi" sequence="75" value="87"/>
+                <element label="(UTC 05:00) Tashkent" sequence="76" value="47"/>
+                <element label="(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi" sequence="77" value="23"/>
+                <element label="(UTC 05:30) Sri Jayawardenepura" sequence="78" value="66"/>
+                <element label="(UTC 05:45) Kathmandu" sequence="79" value="62"/>
+                <element label="(UTC 06:00) Astana" sequence="80" value="71"/>
+                <element label="(UTC 06:00) Dhaka" sequence="81" value="102"/>
+                <element label="(UTC 06:00) Novosibirsk (RTZ 5)" sequence="82" value="46"/>
+                <element label="(UTC 06:30) Yangon (Rangoon)" sequence="83" value="61"/>
+                <element label="(UTC+07:00) Bangkok, Hanoi, Jakarta" sequence="84" value="22"/>
+                <element label="(UTC 07:00) Krasnoyarsk (RTZ 6)" sequence="85" value="64"/>
+                <element label="(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi" sequence="86" value="45"/>
+                <element label="(UTC 08:00) Irkutsk (RTZ 7)" sequence="87" value="63"/>
+                <element label="(UTC+08:00) Kuala Lumpur, Singapore" sequence="88" value="21"/>
+                <element label="(UTC 08:00) Perth" sequence="89" value="73"/>
+                <element label="(UTC 08:00) Taipei" sequence="90" value="75"/>
+                <element label="(UTC 08:00) Ulaanbaatar" sequence="91" value="94"/>
+                <element label="(UTC+09:00) Osaka, Sapporo, Tokyo" sequence="92" value="20"/>
+                <element label="(UTC 09:00) Seoul" sequence="93" value="72"/>
+                <element label="(UTC 09:00) Yakutsk (RTZ 8)" sequence="94" value="70"/>
+                <element label="(UTC 09:30) Adelaide" sequence="95" value="19"/>
+                <element label="(UTC 09:30) Darwin" sequence="96" value="44"/>
+                <element label="(UTC 10:00) Brisbane" sequence="97" value="18"/>
+                <element label="(UTC+10:00) Canberra, Melbourne, Sydney" sequence="98" value="76"/>
+                <element label="(UTC+10:00) Guam, Port Moresby" sequence="99" value="43"/>
+                <element label="(UTC 10:00) Hobart" sequence="100" value="42"/>
+                <element label="(UTC 10:00) Magadan" sequence="101" value="99"/>
+                <element label="(UTC+10:00) Vladivostok, Magadan (RTZ 9)" sequence="102" value="68"/>
+                <element label="(UTC 11:00) Chokurdakh (RTZ 10)" sequence="103" value="107"/>
+                <element label="(UTC+11:00) Solomon Is., New Caledonia" sequence="104" value="41"/>
+                <element label="(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky (RTZ 11)" sequence="105" value="108"/>
+                <element label="(UTC+12:00) Auckland, Wellington" sequence="106" value="17"/>
+                <element label="(UTC 12:00) Coordinated Universal Time 12" sequence="107" value="97"/>
+                <element label="(UTC 12:00) Fiji" sequence="108" value="40"/>
+                <element label="(UTC 12:00) Petropavlovsk-Kamchatsky - Old" sequence="109" value="92"/>
+                <element label="(UTC 13:00) Nuku\'alofa" sequence="110" value="67"/>
+                <element label="(UTC 13:00) Samoa" sequence="111" value="16"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify the desired URL for the new Site Collection" label="URL Name" mandatory="true" max_length="40" name="url_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Use this group to grant people read permissions to the SharePoint Online site." label="Visitors" max_length="2000" name="visitor_group" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="0" label="Unit of Lease Expiration Warning Period" max_length="40" name="warning_unit" type="string">
+            <choice>
+                <element label="Day(s)" sequence="0" value="0"/>
+                <element label="Week(s)" sequence="1" value="1"/>
+                <element label="Month(s)" sequence="2" value="2"/>
+                <element label="Year(s)" sequence="3" value="3"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="service"/>
+        </index>
+    </element>
+</database>

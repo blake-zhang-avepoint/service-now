@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_avepo_cloud_gove_request" label="Create Group/Team" max_length="40" name="x_avepo_cloud_gove_create_group" type="collection">
+        <element label="Group Lease Period" max_length="40" name="duration" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="0" label="Unit of Lease" max_length="40" name="duration_type" type="string">
+            <choice>
+                <element label="Days" sequence="0" value="0"/>
+                <element label="Weeks" sequence="1" value="1"/>
+                <element label="months" sequence="2" value="2"/>
+                <element label="Years" sequence="3" value="3"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Select a group classification for the newly created Office 365 group." label="Group Classification" max_length="40" name="group_classification" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Group Description" max_length="2000" name="group_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Group ID" mandatory="true" max_length="40" name="group_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Group Name" mandatory="true" max_length="40" name="group_name" type="string"/>
+        <element hint="Enable hidden group membership to hide the members of the Office 365 group from users who are not members of the group" label="Enable Hidden Group Membership" max_length="40" name="hide_membership" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Select the language for the Office 365 group. " label="Language" max_length="40" name="language" type="string">
+            <choice/>
+        </element>
+        <element label="Group Lease Expiration Date" max_length="40" name="lease_date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="0" label="Method to Specify Group Lease" max_length="40" name="lease_type" type="string">
+            <choice>
+                <element label="Specify a group lease period" sequence="0" value="0"/>
+                <element label="Specify a group lease expiration date" sequence="1" value="1"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify one or more Office 365 users to be the members of the new group. Note that only Office 365 users who have mailboxes are allowed to be specified to be the members of the new group." label="Group Members" max_length="2000" name="members" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="manually" label="Method to Select Group Members" max_length="40" name="method" type="string">
+            <choice>
+                <element label="Select group members manually" sequence="0" value="manually"/>
+                <element label="Define rules to populate group members dynamically" sequence="1" value="dynamically"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="1" hint="Choose whether to let people outside the organization e-mail the group." label="Outside Senders" max_length="40" name="outside_senders" type="string">
+            <choice>
+                <element label="Allow outside senders" sequence="0" value="1"/>
+                <element label="Don't allow outside senders" sequence="1" value="0"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify one or more Office 365 users to be the owners of the new group. Note that only Office 365 users who have mailboxes are allowed to be specified as owners of the new group." label="Group Owners" max_length="2000" name="owner" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Select an Office 365 group policy that will be applied to the group." label="Office 365 Group Policy" max_length="40" name="policy" type="string">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify a user to be the primary group contact. This should be a business user who will be responsible for managing the lifecycle of the Office 365 group." label="Primary Group Contact" max_length="200" name="primary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="public" hint="Choose to specify the privacy for the new Office 365 group" label="Privacy" mandatory="true" max_length="40" name="privacy" type="string">
+            <choice>
+                <element label="Public - Anyone can see group content" sequence="0" value="public"/>
+                <element label="Private - Only members can see group content" sequence="1" value="private"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify a user to be the secondary group contact. This should be a business user who will be responsible for managing the lifecycle of the Office 365 group in the event the primary group contact is unable to respond to a notification." label="Secondary Group Contact" max_length="200" name="secondary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="ref_auto_completer=AJAXReferenceChoice,max_ref_dropdown=200" choice="1" label="Service" mandatory="true" max_length="200" name="service" reference="x_avepo_cloud_gove_service" reference_qual="inactive=false^service_type=120^EQ" reference_qual_condition="inactive=false^service_type=120^EQ" type="reference">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="1" hint="Choose whether to allow group members to receive copies of group conversations and events." label="Subscribe Members" mandatory="true" max_length="40" name="subscribe_members" type="string">
+            <choice>
+                <element label="Send copies of group conversations and events to group members' inboxes" sequence="0" value="1"/>
+                <element label="Don't send copies of group conversations and events to group members' inboxes" sequence="1" value="0"/>
+            </choice>
+        </element>
+        <element hint="Choose whether to enhance the Office 365 group with Microsoft Teams functionality." label="Enable Microsoft Teams for Office 365 Group" max_length="40" name="teams" type="boolean"/>
+    </element>
+</database>

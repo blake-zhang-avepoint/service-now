@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_avepo_cloud_gove_request" label="Change Site Collection Contact or Administrator" max_length="40" name="x_avepo_cloud_gove_change_sc_contact" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Additional Administrators" max_length="2000" name="additional_admin" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" label="Alternate User" max_length="200" name="alternate_user" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="url" hint="Specify the method for changing the site collection administrator." label="Change Method" max_length="40" name="change_method" type="string">
+            <choice>
+                <element label="By URL" sequence="0" value="url"/>
+                <element label="By User" sequence="1" value="user"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Current User" max_length="200" name="current_user" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="New User" max_length="200" name="new_user" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Primary Administrator" max_length="200" name="primary_admin" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Primary Contact" max_length="200" name="primary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" hint="Enter the URL of a site collection within the scope defined for this service." label="URL" max_length="1024" name="sc_url" type="url"/>
+        <element attributes="edge_encryption_enabled=true" label="Secondary Contact" max_length="200" name="secondary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="ref_auto_completer=AJAXReferenceChoice,max_ref_dropdown=200" choice="1" label="Service" mandatory="true" max_length="32" name="service" reference="x_avepo_cloud_gove_service" reference_qual="inactive=false^service_type=9^EQ" reference_qual_condition="inactive=false^service_type=9^EQ" type="reference">
+            <choice/>
+        </element>
+        <index name="index">
+            <element name="service"/>
+        </index>
+    </element>
+</database>

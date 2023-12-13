@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Service" max_length="40" name="x_avepo_cloud_gove_service" type="collection">
+        <element label="Details" max_length="4000" name="details" type="string"/>
+        <element label="Inactive" max_length="40" name="inactive" type="boolean"/>
+        <element label="Service Id" max_length="100" name="service_id" type="string"/>
+        <element display="true" label="Service Name" max_length="200" name="service_name" type="string"/>
+        <element label="Service Type" max_length="100" name="service_type" type="integer"/>
+        <index name="index">
+            <element name="service_name"/>
+        </index>
+    </element>
+</database>

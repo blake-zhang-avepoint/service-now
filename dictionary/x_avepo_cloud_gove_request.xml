@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Request" max_length="40" name="x_avepo_cloud_gove_request" type="collection">
+        <element label="Approver" max_length="32" name="approvers" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element choice="3" default="IT" hint="Select the department you wish this request and the requested new site collection to belong to." label="Department" max_length="40" name="department" type="choice">
+            <choice>
+                <element label="IT" sequence="0" value="IT"/>
+                <element label="HR" sequence="1" value="HR"/>
+                <element label="Executive" sequence="2" value="Executive"/>
+                <element label="Sales" sequence="3" value="Sales"/>
+                <element label="Finance" sequence="4" value="Finance"/>
+                <element label="Marketing" sequence="5" value="Marketing"/>
+            </choice>
+        </element>
+        <element hint="Enter optional notes to your approvers." label="Notes to Approvers" max_length="2000" name="description" type="string"/>
+        <element label="Metadata" max_length="4000" name="metadata" type="simple_name_values"/>
+        <element label="Request ID" max_length="40" name="request_id" type="string"/>
+        <element hint="Enter a brief summary for your new service request." label="Request Summary" max_length="200" name="request_summary" type="string"/>
+        <element label="Status" max_length="200" name="status" type="string"/>
+        <element default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Class" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true"/>
+        <index name="index">
+            <element name="approvers"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="x_avepo_cloud_gove_request" label="Change Group/Team Settings" max_length="40" name="x_avepo_cloud_gove_change_group_setting" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" hint="Select the group classification that you wish to change to." label="Group Classification" max_length="40" name="classification" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" hint="Specify the new description for the group." label="Group Description" max_length="400" name="group_description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Specify an Office 365 group whose settings will be changed." label="Goup ID" mandatory="true" max_length="200" name="group_id" type="string"/>
+        <element label="Group Metadata" max_length="4000" name="group_metadata" type="simple_name_values"/>
+        <element attributes="edge_encryption_enabled=true" hint="Specify the new name for the group." label="Group Name" mandatory="true" max_length="200" name="group_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" hint="Add users as members of the group. " label="Add Group Members" max_length="400" name="members" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element hint="Choose whether to allow people outside the organization to e-mail the group." label="Outside Senders" max_length="40" name="outside_senders" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" hint="Add users as owners of the group. Note that only Office 365 users who have mailboxes are allowed to be added as owners of the group." label="Add Group Owners" max_length="400" name="owners" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" hint="Enter a new primary group contact for the Office 365 group." label="Primary Group Contact" mandatory="true" max_length="200" name="primary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" hint="Remove users from members group. " label="Remove Group Members" max_length="400" name="removed_members" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" hint=" Remove users from owners group." label="Remove Group Owners" max_length="400" name="removed_owners" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list"/>
+        <element attributes="edge_encryption_enabled=true" hint="Enter a new secondary group contact for the Office 365 group." label="Secondary Group Contact" mandatory="true" max_length="200" name="secondary_contact" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element attributes="ref_auto_completer=AJAXReferenceChoice,max_ref_dropdown=200" choice="1" label="Service" mandatory="true" max_length="32" name="service" reference="x_avepo_cloud_gove_service" reference_qual="inactive=false^service_type=121^EQ" reference_qual_condition="inactive=false^service_type=121^EQ" type="reference">
+            <choice/>
+        </element>
+        <element hint="Choose whether to allow group members to receive copies of group conversations and events." label="Subscribe Members" max_length="40" name="subscribe" type="boolean"/>
+        <element hint="Choose whether to enhance the existing Office 365 group with Microsoft Teams functionality." label="Enable Microsoft Teams for Office 365 Group" max_length="40" name="teams" type="boolean"/>
+        <index name="index">
+            <element name="service"/>
+        </index>
+    </element>
+</database>
