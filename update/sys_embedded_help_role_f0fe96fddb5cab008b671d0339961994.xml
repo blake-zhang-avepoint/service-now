@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role/>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-09-03 02:55:40</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>f0fe96fddb5cab008b671d0339961994</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>a0fe96fddb5cab008b671d0339961992</sys_name>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_embedded_help_role_f0fe96fddb5cab008b671d0339961994</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-03 02:55:40</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

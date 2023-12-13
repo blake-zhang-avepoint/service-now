@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>AvePoint Cloud Governance API URL&lt;br \&gt;&#13;
+East US (Virginia):                       &lt;b&gt;   https://eugaapi.avepointonlineservices.com &lt;/b&gt;&lt;br \&gt;&#13;
+US Gov Virginia (Virginia):    &lt;b&gt;       https://gausgovapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+North Europe (Ireland):         &lt;b&gt;      https://negaapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+Southeast Asia (Singapore):   &lt;b&gt;   https://apgaapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+Australia Southeast (Victoria):  &lt;b&gt;https://asgaapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+Japan West (Osaka):                  &lt;b&gt;   https://jpgaapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+West Europe (Netherlands):    &lt;b&gt;  https://wegaapi.avepointonlineservice.com&lt;/b&gt;&lt;br \&gt;&#13;
+France Central (Paris):             &lt;b&gt;    https://fcgaapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+Canada Central (Toronto):     &lt;b&gt;   https://cagaapi.avepointonlineservices.com&lt;/b&gt;&lt;br \&gt;&#13;
+Specify the AvePoint Cloud Governance API URL according to your data center:</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_avepo_cloud_gove.data_center_url</name>
+        <read_roles/>
+        <suffix>data_center_url</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-27 01:14:33</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>0a623d9cdb7d1f00b723e536ca9619b3</sys_id>
+        <sys_mod_count>51</sys_mod_count>
+        <sys_name>x_avepo_cloud_gove.data_center_url</sys_name>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_properties_0a623d9cdb7d1f00b723e536ca9619b3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-03 07:53:48</sys_updated_on>
+        <type>string</type>
+        <value/>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=0a623d9cdb7d1f00b723e536ca9619b3"/>
+</record_update>
