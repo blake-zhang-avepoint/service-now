@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="owner" label="Group Owners" language="en" table="x_avepo_cloud_gove_create_group">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>owner</element>
+            <help/>
+            <hint>Specify one or more Office 365 users to be the owners of the new group. Note that only Office 365 users who have mailboxes are allowed to be specified as owners of the new group.</hint>
+            <label>Group Owners</label>
+            <language>en</language>
+            <name>x_avepo_cloud_gove_create_group</name>
+            <plural>Group Owners</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-11 03:58:38</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>3d8e5eb8db4e1740b723e536ca9619db</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_name>Group Owners</sys_name>
+            <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+            <sys_update_name>sys_documentation_x_avepo_cloud_gove_create_group_owner_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-06-21 06:42:25</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

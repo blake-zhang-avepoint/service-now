@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="service" label="Service" language="en" table="x_avepo_cloud_gove_create_site_collection">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>service</element>
+            <help/>
+            <hint/>
+            <label>Service</label>
+            <language>en</language>
+            <name>x_avepo_cloud_gove_create_site_collection</name>
+            <plural>Services</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-09-03 02:11:40</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>44e452b9db5cab008b671d03399619b1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Service</sys_name>
+            <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+            <sys_update_name>sys_documentation_x_avepo_cloud_gove_create_site_collection_service_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-09-03 02:11:40</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

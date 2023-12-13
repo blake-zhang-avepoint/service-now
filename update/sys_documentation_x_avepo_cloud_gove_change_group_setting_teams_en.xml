@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="teams" label="Enable Microsoft Teams for Office 365 Group" language="en" table="x_avepo_cloud_gove_change_group_setting">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>teams</element>
+            <help/>
+            <hint>Choose whether to enhance the existing Office 365 group with Microsoft Teams functionality.</hint>
+            <label>Enable Microsoft Teams for Office 365 Group</label>
+            <language>en</language>
+            <name>x_avepo_cloud_gove_change_group_setting</name>
+            <plural>Enable Microsoft Teams for Office 365 Groups</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-14 06:45:36</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>e4816ef5db4a9740b723e536ca961965</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Enable Microsoft Teams for Office 365 Group</sys_name>
+            <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+            <sys_update_name>sys_documentation_x_avepo_cloud_gove_change_group_setting_teams_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-06-29 07:32:53</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

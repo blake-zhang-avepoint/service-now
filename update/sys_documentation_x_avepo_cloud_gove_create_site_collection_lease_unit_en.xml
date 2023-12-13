@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="lease_unit" label="Unit of Lease Period" language="en" table="x_avepo_cloud_gove_create_site_collection">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>lease_unit</element>
+            <help/>
+            <hint/>
+            <label>Unit of Lease Period</label>
+            <language>en</language>
+            <name>x_avepo_cloud_gove_create_site_collection</name>
+            <plural>Unit of Lease Periods</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-05-02 03:54:49</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>4257c0cedbf9df00b723e536ca9619a5</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_name>Unit of Lease Period</sys_name>
+            <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+            <sys_update_name>sys_documentation_x_avepo_cloud_gove_create_site_collection_lease_unit_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-06-21 06:46:57</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
