@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_avepo_cloud_gove.GetServiceNameAndId</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetServiceNameAndId</name>
+        <script><![CDATA[var GetServiceNameAndId = Class.create();
+GetServiceNameAndId.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    getServiceNameAndId: function(){
+		var type = this.getParameter('sysparm_serviceType');
+		//gs.info('ajax :'+type);
+		var sm = new sn_ws.RESTMessageV2("x_avepo_cloud_gove.Logon", "Post");
+		sm.setStringParameter('data_center_url', gs.getProperty('x_avepo_cloud_gove.data_center_url'));
+		var logonInfo = {"userName": gs.getProperty("x_avepo_cloud_gove.gao_user_name"), "passWord": gs.getProperty("x_avepo_cloud_gove.gao_user_password")};
+		sm.setRequestBody(global.JSON.stringify(logonInfo));
+		var response = sm.execute();
+		var token = response.getBody();
+
+
+		//Get all Services
+		sm = new sn_ws.RESTMessageV2("x_avepo_cloud_gove.Get All Services", "GET");
+		sm.setStringParameter('data_center_url', gs.getProperty('x_avepo_cloud_gove.data_center_url'));
+		sm.setStringParameter("access_token", token.replace(/\"/g,''));
+		sm.setStringParameter("typeList","typeList="+type);
+		response = sm.execute();
+		var services = global.JSON.parse(response.getBody());
+		gs.info(global.JSON.stringify(services));
+		var result = [];
+		for(var item in services)
+		{
+			var obj = {};
+			obj.Id=item;
+			obj.Name=services[item];
+		    
+			result.push(obj);
+		}
+		this._updateServiceTable(result, type);
+		return global.JSON.stringify(result);
+		
+	},
+	getServices: function()
+	{
+		var type = this.getParameter('sysparm_serviceType');
+		var gr = new GlideRecordSecure("x_avepo_cloud_gove_service");
+		gr.addQuery('service_type', type);
+		gr.orderBy('service_name');
+		gr.query();
+		var result = [];
+		while(gr.next()){ 
+			var obj = {};
+			obj.Id=gr.service_id.toString();
+			obj.Name=gr.service_name.toString();
+			result.push(obj);
+		}
+		return global.JSON.stringify(result);
+	},
+	_updateServiceTable: function(services, type)
+	{
+		try
+		{
+			var gr = new GlideRecordSecure("x_avepo_cloud_gove_service");
+			gr.addQuery('service_type', type);
+			gr.query();
+			while(gr.next())
+			{
+				gr.inactive = true;
+				gs.info("remove service > "+gr.value);
+				gr.update();
+			}	
+			for(var i =0; i<services.length; i++)
+			{
+				gr.initialize();
+				gr.addQuery('service_type', type);
+				gr.addQuery('service_id', services[i].Id);
+				gr.query();
+				gr.next();
+				if(gr.service_name)
+				{
+					gr.service_name = services[i].Name;
+					gr.details = "";
+					gr.inactive = false;
+					gs.info("Update Service > " + gr.service_name);
+					gr.update();
+				}
+				else
+				{
+					gr.initialize();
+					gr.service_name = services[i].Name;
+					gr.service_id = services[i].Id;
+					gr.service_type = type;
+					gs.info('Insert Service >' + gr.service_name);
+					gr.insert();
+				}
+			}
+		}
+		catch(ex)
+		{
+			gs.info("An error occurred when updating services: "+ ex);
+		}
+	},	
+	type: 'GetServiceNameAndId'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-20 09:20:13</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a68c9bc2dba15b00379a6be3ca96194b</sys_id>
+        <sys_mod_count>50</sys_mod_count>
+        <sys_name>GetServiceNameAndId</sys_name>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_script_include_a68c9bc2dba15b00379a6be3ca96194b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-03 05:18:22</sys_updated_on>
+    </sys_script_include>
+</record_update>

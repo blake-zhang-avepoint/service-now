@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>service</field>
+        <global>true</global>
+        <messages/>
+        <name>Set Create Group/Team</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading && g_form.isNewRecord() || newValue === '') {
+      return;
+   }
+
+   g_form.clearMessages();
+   g_form.addInfoMessage('Loading service settings…');
+   //Type appropriate comment here, and begin script below
+   try{
+       var ga = new GlideAjax('GetServiceSettings');
+	   ga.addParam('sysparm_name', 'getServiceSettings');
+	   ga.addParam('sysparm_service_name', newValue);
+	   ga.getXML(setService);		
+	}	
+	catch(ex)
+	{
+		g_form.addErrorMessage(ex);
+	}	  
+}
+function setService(response){
+	try{
+		var answer = response.responseXML.documentElement.getAttribute("answer");
+		var service = JSON.parse(answer);
+		setAssignBy('privacy', service.PrivacyValueConfig, service.Privacy?'public':'private', g_form.getValue('privacy'));
+		setAssignBy('subscribe_members', service.SubscribeValueConfig, service.EnableSubscribe?'1':'0', g_form.getValue('subscribe_members'));
+		setAssignBy('outside_senders', service.OutsideSenderValueConfig, service.OutsideSender?'1':'0', g_form.getValue('outside_senders'));
+		setAssignBy('teams', service.TeamCollaborationValueConfig, service.EnableTeamCollaboration, g_form.getValue('teams'));
+		
+		var languagesDic = {'en-US': 'English (United States)', 'de-DE': 'Deutsch (Deutschland)', 'fr-FR': 'français (France)', 'it-IT': 'italiano (Italia)', 'ja-JP': '日本語 (日本)'};
+		var selectedLanguages = service.Lanaguages;
+		var languageValue = g_form.getValue('language');
+		g_form.clearOptions('language');
+		for(var j = 0; j < selectedLanguages.length; j++)
+		{
+			g_form.addOption('language', selectedLanguages[j], languagesDic[selectedLanguages[j]]?languagesDic[selectedLanguages[j]]:selectedLanguages[j]);
+		}
+		setAssignBy('language', service.LanguageValueConfig, service.DefaultLanguage, languageValue);
+		
+		var classificationVlaue = g_form.getValue('group_classification');
+		g_form.clearOptions('group_classification');
+		var classificationList = service.ClassificationList;
+		if(classificationList && classificationList.length > 0)
+		{
+			for(var k = 0; k < classificationList.length; k++)
+			{
+				g_form.addOption('group_classification', classificationList[k], classificationList[k]);
+			}
+			setAssignBy('group_classification', service.ClassificationValueConfig, service.Classification, classificationVlaue);
+		}		
+		else{
+			setAssignBy('group_classification', 3, '', classificationVlaue);
+		}
+		
+		var policyValue = g_form.getValue('policy');
+		g_form.clearOptions('policy');
+		var policies = service.PoliciesInfo;
+		for(var i = 0; i < policies.length; i++)
+		{
+			g_form.addOption('policy', policies[i].PolicyId, policies[i].PolicyName);
+		}
+		setAssignBy('policy', service.PolicyValueConfig, service.DefaultPolicy, policyValue);
+		
+		setAssignBy('primary_contact', service.PrimaryContactValueConfig, service.PrimaryContact, g_form.getValue('primary_contact'));
+		setAssignBy('secondary_contact', service.SecondaryContactValueConfig, service.SecondaryContact, g_form.getValue('secondary_contact'));
+		setAssignBy('owner', service.OwnerValueConfig, service.GroupOwners, g_form.getValue('owner'));
+		setAssignBy('members', service.MemberValueConfig, service.GroupMembers, g_form.getValue('members'));
+		setAssignBy('hide_membership', service.EnableGroupMembershipHiddenValueConfig, service.EnableGroupMembershipHidden, g_form.getValue('hide_membership'));
+		
+		g_form.setSectionDisplay('group_lifecycle', service.EnableExtendExpiration);
+		if(service.Metadata && g_form.isNewRecord())
+		{
+			var metadataList = JSON.parse(service.Metadata);
+			var list = {};
+			for(var b = 0; b < metadataList.length; b++)
+			{
+				if(metadataList[b].ValueConfig == 0 || metadataList[b].ValueConfig == 1)
+				{
+					list[metadataList[b].Name] = metadataList[b].DisplayValue;
+				}	
+			}
+			g_form.setValue('metadata', JSON.stringify(list));
+		}
+		if(!g_form.isNewRecord())
+		{
+			var fields = g_form.getEditableFields();
+			for (var x = 0; x < fields.length; x++) {
+				g_form.setReadOnly(fields[x], true);
+			}
+			g_form.setReadOnly('metadata', true);	
+		}
+		g_form.clearMessages();
+		g_form.addInfoMessage('Successfully loaded service settings.');
+	}
+	catch(ex){
+		g_form.addErrorMessage(ex);
+	}
+}
+function setAssignBy(field, config, value, realValue)
+{
+	g_form.setValue(field, g_form.isNewRecord() ? value : realValue);
+	if(config == 0)
+	{
+		g_form.setDisplay(field, true);
+		g_form.setMandatory(field, false);
+		g_form.setReadOnly(field, false);
+	}
+	else if(config == 1)
+	{
+		g_form.setDisplay(field, true);
+		g_form.setMandatory(field, true);
+		g_form.setReadOnly(field, false);
+	}
+	else if(config == 2)
+	{
+		g_form.setDisplay(field, true);
+		g_form.setMandatory(field, false);
+		g_form.setReadOnly(field, true);
+	}
+	else if(config == 3)
+	{
+		g_form.setDisplay(field, false);
+		g_form.setMandatory(field, false);
+		g_form.setReadOnly(field, false);
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-21 09:07:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>bc100348db5a9300b723e536ca9619fa</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>Set Create Group/Team</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_script_client_bc100348db5a9300b723e536ca9619fa</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-08-14 06:40:03</sys_updated_on>
+        <table>x_avepo_cloud_gove_create_group</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

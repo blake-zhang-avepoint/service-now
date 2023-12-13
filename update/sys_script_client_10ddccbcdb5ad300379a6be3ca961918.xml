@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>service</field>
+        <global>true</global>
+        <messages/>
+        <name>Set Change Group/Team Settings</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading && g_form.isNewRecord() || newValue === '') {
+      return;
+   }
+
+   g_form.clearMessages();
+   g_form.addInfoMessage('Loading service settings…');
+   //Type appropriate comment here, and begin script below
+   try{
+       var ga = new GlideAjax('GetServiceSettings');
+	   ga.addParam('sysparm_name', 'getServiceSettings');
+	   ga.addParam('sysparm_service_name', newValue);
+	   ga.getXML(setService);		
+	}	
+	catch(ex)
+	{
+		g_form.addErrorMessage(ex);
+	}	  
+}
+function setService(response){
+	try{
+		var answer = response.responseXML.documentElement.getAttribute("answer");
+		var service = JSON.parse(answer);
+		g_form.setDisplay('group_name', service.EnableChangeGroupName);
+		g_form.setDisplay('group_description', service.EnableChangeGroupDescription);
+		g_form.setDisplay('subscribe', service.EnableSubscribeMembers);
+		g_form.setDisplay('outside_senders', service.EnableExternalSenders);
+		g_form.setDisplay('teams', service.EnableChangeTeamCollaboration);
+		var classification = g_form.getValue('classification');
+		g_form.clearOptions('classification');
+		if(service.EnableChangeClassification && service.ClassificationList)
+		{
+			for(var i = 0; i < service.ClassificationList.length; i++)
+			{
+				g_form.addOption('classification', service.ClassificationList[i], service.ClassificationList[i]);
+			}
+		}
+		if(!g_form.isNewRecord())
+		{
+			g_form.setValue('classification', classification);
+		}		
+		g_form.setDisplay('classification', service.EnableChangeClassification);
+		g_form.setMandatory('primary_contact', service.EnableChangePrimaryContact);
+		g_form.setMandatory('secondary_contact', service.EnableChangeSecondaryContact);
+		g_form.setDisplay('primary_contact', service.EnableChangePrimaryContact);
+		g_form.setDisplay('secondary_contact', service.EnableChangeSecondaryContact);
+		g_form.setDisplay('owners', service.EnableAddOwnerToGroup);
+		g_form.setDisplay('removed_owners', service.EnableRemoveOwnerFromGroup);
+		g_form.setDisplay('members', service.EnableAddMemberToGroup);
+		g_form.setDisplay('removed_members', service.EnableRemoveMemberFromGroup);
+		g_form.setDisplay('group_metadata', service.EnableChangeMetadata);
+		if(service.EnableChangeMetadata && service.ChangeMetadatas && g_form.isNewRecord())
+		{
+			var metadataList = JSON.parse(service.ChangeMetadatas);
+			var list = {};
+			for(var j = 0; j < metadataList.length; j++)
+			{
+				list[metadataList[j].Name] = metadataList[j].DisplayValue;
+			}
+			g_form.setValue('group_metadata', JSON.stringify(list));
+		}
+		if(service.Metadata && g_form.isNewRecord())
+		{
+			var metadatas = JSON.parse(service.Metadata);
+			var obj = {};
+			for(var b = 0; b < metadatas.length; b++)
+			{
+				if(metadatas[b].ValueConfig == 0 || metadatas[b].ValueConfig == 1)
+				{
+					obj[metadatas[b].Name] = metadatas[b].DisplayValue;
+				}	
+			}
+			g_form.setValue('metadata', JSON.stringify(obj));
+		}
+		if(!g_form.isNewRecord())
+		{
+			var fields = g_form.getEditableFields();
+			for (var x = 0; x < fields.length; x++) {
+				g_form.setReadOnly(fields[x], true);
+			}
+			g_form.setReadOnly('metadata', true);
+			if(service.EnableChangeMetadata)
+			{
+				g_form.setReadOnly('group_metadata', true);
+			}
+			if(service.EnableAddOwnerToGroup)
+			{
+				g_form.setReadOnly('owners', true);
+			}
+			if(service.EnableRemoveOwnerFromGroup)
+			{
+				g_form.setReadOnly('removed_owners', true);
+			}
+			if(service.EnableAddMemberToGroup)
+			{
+				g_form.setReadOnly('members', true);
+			}
+			if(service.EnableRemoveMemberFromGroup)
+			{
+				g_form.setReadOnly('removed_members', true);
+			}
+		}
+		g_form.clearMessages();
+		g_form.addInfoMessage('Successfully loaded service settings.');
+	}
+	catch(ex){
+		g_form.addErrorMessage(ex);
+	}
+}
+]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-23 03:57:39</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>10ddccbcdb5ad300379a6be3ca961918</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>Set Change Group/Team Settings</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_script_client_10ddccbcdb5ad300379a6be3ca961918</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-08-14 07:12:18</sys_updated_on>
+        <table>x_avepo_cloud_gove_change_group_setting</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

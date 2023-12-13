@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>service</field>
+        <global>true</global>
+        <messages/>
+        <name>Set Create Site Collection</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading && g_form.isNewRecord() || newValue === '') {
+      return;
+   }
+
+   g_form.clearMessages();
+   g_form.addInfoMessage('Loading service settings…');
+   //Type appropriate comment here, and begin script below
+   try{
+       var ga = new GlideAjax('GetServiceSettings');
+	   ga.addParam('sysparm_name', 'getServiceSettings');
+	   ga.addParam('sysparm_service_name', newValue);
+	   ga.getXML(setService);		
+	}	
+	catch(ex)
+	{
+		g_form.addErrorMessage(ex);
+	}	  
+}
+function setService(response){
+	try{
+		var answer = response.responseXML.documentElement.getAttribute("answer");
+		var service = JSON.parse(answer);
+		g_form.setValue('sc_url', service.DefaultWebApplication);
+		var mappings=service.WebAppManagedPathMappingSelection[service.DefaultWebApplication];
+		
+		//managed path setting
+		var managedPath = g_form.getValue('managed_paths');
+		g_form.clearOptions('managed_paths');
+		for(var i=0; i< mappings.length; i++)
+		{
+			g_form.addOption('managed_paths', mappings[i], mappings[i]);
+		}
+		setAssignBy('managed_paths', getValueConfig(service.WebApplicationConfig), service.DefaultManagedPath, managedPath);
+		
+		//language setting
+		var languageValue = g_form.getValue('language');
+		g_form.clearOptions('language');
+		var languages = JSON.parse(service.SelectedLanguages);
+		if(languages)
+		{
+			for(var c = 0; c < languages.length; c++)
+			{
+				g_form.addOption('language', languages[c].LCID, languages[c].DisplayName);
+			}
+		}
+		setAssignBy('language', service.LanguageConfig, service.DefaultLanguage, languageValue);
+		
+		//template and security group setting
+		var templateValue = g_form.getValue('template');
+		var securityGroupSetting = JSON.parse(service.SecurityGroupSetting);
+		var templates = securityGroupSetting.SGWithTemplate;
+		g_form.clearOptions('template');
+		for(var j = 0; j <  templates.length; j++)
+		{
+			if(templates[j].TemplateID)
+			{
+				g_form.addOption('template', templates[j].TemplateID, templates[j].TemplateName);
+			}
+			if(templates[j].TemplateID == service.DefaultTemplate)
+			{
+				setAssignBy('owner_group', 3, '', g_form.getValue('owner_group'));
+				setAssignBy('member_group', 3, '', g_form.getValue('member_group'));
+				setAssignBy('visitor_group', 3, '', g_form.getValue('visitor_group'));
+				var securityGroups = templates[j].GroupsAndUsers;
+				for(var k = 0; k < securityGroups.length; k++)
+				{
+					switch(securityGroups[k].BulidInGroupsType)
+					{
+						case 1:
+							setAssignBy('owner_group', securityGroups[k].GroupsConfigType, '', g_form.getValue('owner_group'));
+							break;
+						case 2:
+							setAssignBy('member_group', securityGroups[k].GroupsConfigType, '', g_form.getValue('member_group'));
+							break;
+						case 3:
+							setAssignBy('visitor_group', securityGroups[k].GroupsConfigType, '', g_form.getValue('visitor_group'));
+							break;
+					}
+				}
+			}
+		}
+		setAssignBy('template', getValueConfig(service.SiteTemplateConfig), service.DefaultTemplate, templateValue);
+		
+		//policy setting
+		var policyValue = g_form.getValue('policy');
+		g_form.clearOptions('policy');
+		var selectedPolicy = JSON.parse(service.PolicySelection);
+		for(var a = 0; a < selectedPolicy.length; a++)
+		{
+			g_form.addOption('policy', selectedPolicy[a].ID, selectedPolicy[a].Title);
+		}
+		setAssignBy('policy', getValueConfig(service.PolicyConfig), service.DefaultPolicy, policyValue);
+		
+		//time zone setting
+		setAssignBy('time_zone', service.TimeZoneConfig, service.TimeZone, g_form.getValue('time_zone'));
+		
+		//DPM setting
+		var dpmValue = g_form.getValue('dpm');
+		g_form.clearOptions('dpm');
+		if(service.IsApplyDocAveDeploymentManagerPlan)
+		{
+			g_form.setDisplay('dpm', true);
+			var plans = service.SelectedDeploymentManagerPlans.split(';');
+			for(var p = 0; p < plans.length; p++)
+			{
+				g_form.addOption('dpm', plans[p], plans[p]);
+			}
+			setAssignBy('dpm', service.DeploymentManagerConfigType, service.DefaultDeploymentManagerPlan, dpmValue);
+		}
+		else
+		{
+			g_form.setDisplay('dpm', false);
+		}
+		
+		//administrator and contact setting
+		setAssignBy('primary_admin', service.PrimaryAdminValueConfig, service.PrimaryAdminInfo, g_form.getValue('primary_admin'));
+		setAssignBy('additional_admin', service.AdditionalAdminValueConfig, service.AdditionalAdmin, g_form.getValue('additional_admin'));
+		setAssignBy('sc_primary_contact', service.PrimaryContactValueConfig, service.PrimaryContactInfo, g_form.getValue('sc_primary_contact'));
+		setAssignBy('sc_secondary_contact', service.SecondaryContactValueConfig, service.SecondaryContactInfo, g_form.getValue('sc_secondary_contact'));
+		
+		//Lease period setting
+		if(service.IsEnableLeasePeriod)
+		{
+			g_form.setSectionDisplay('site_collectionlifecycle', true);
+			setAssignBy('lease_period', service.LeasePeriodValueConfig, service.LeasePeriod, g_form.getValue('lease_period'));
+			setAssignBy('lease_unit', service.LeasePeriodValueConfig, service.LeasePeriodUnit.toString(), g_form.getValue('lease_unit'));
+			
+			g_form.setDisplay('lease_warning', service.IsEnableLeaseWarning);
+			g_form.setDisplay('warning_unit', service.IsEnableLeaseWarning);
+			if(service.IsEnableLeaseWarning)
+			{
+				setAssignBy('lease_warning', service.LeaseWarningValueConfig, service.LeaseWarningDuration, g_form.getValue('lease_warning'));
+				setAssignBy('warning_unit', service.LeaseWarningValueConfig, service.LeaseWarningDurationType.toString(), g_form.getValue('warning_unit'));
+			}
+		}
+		else
+		{
+			g_form.setSectionDisplay('site_collectionlifecycle', false);
+		}
+		
+		//metadata setting
+		if(service.Metadata && g_form.isNewRecord())
+		{
+			var metadataList = JSON.parse(service.Metadata);
+			var list = {};
+			for(var b = 0; b < metadataList.length; b++)
+			{
+				if(metadataList[b].ValueConfig == 0 || metadataList[b].ValueConfig == 1)
+				{
+					list[metadataList[b].Name] = metadataList[b].displayValue;
+				}	
+			}
+			g_form.setValue('metadata', JSON.stringify(list));
+		}
+		if(!g_form.isNewRecord())
+		{
+			var fields = g_form.getEditableFields();
+			for (var x = 0; x < fields.length; x++) {
+				g_form.setReadOnly(fields[x], true);
+			}
+			g_form.setReadOnly('metadata', true);	
+		}
+		g_form.clearMessages();
+		g_form.addInfoMessage('Successfully loaded service settings.');
+	}
+	catch(ex){
+		g_form.addErrorMessage(ex);
+	}
+}
+function setAssignBy(field, config, value, realValue)
+{
+	
+	g_form.setValue(field, g_form.isNewRecord() ? value : realValue);
+	
+	if(config == 0)
+	{
+		g_form.setDisplay(field, true);
+		g_form.setMandatory(field, false);
+		g_form.setReadOnly(field, false);
+	}
+	else if(config == 1)
+	{
+		g_form.setDisplay(field, true);
+		g_form.setMandatory(field, true);
+		g_form.setReadOnly(field, false);
+	}
+	else if(config == 2)
+	{
+		g_form.setDisplay(field, true);
+		g_form.setMandatory(field, false);
+		g_form.setReadOnly(field, true);
+	}
+	else if(config == 3)
+	{
+		g_form.setDisplay(field, false);
+		g_form.setMandatory(field, false);
+		g_form.setReadOnly(field, false);
+	}
+}
+
+function getValueConfig(type)
+{
+	var config = 0;
+	switch(type)
+	{
+		case 'Show':
+			config = 0;
+			break;
+		case 'ShowAndRequired':
+			config = 1;
+			break;
+		case 'ReadOnly':
+			config = 2;
+			break;
+		case 'Hide':
+			config = 3;
+			break;
+	}
+	return config;
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-23 07:30:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>339e207cdb9ad300379a6be3ca96195d</sys_id>
+        <sys_mod_count>41</sys_mod_count>
+        <sys_name>Set Create Site Collection</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_script_client_339e207cdb9ad300379a6be3ca96195d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-03 05:26:39</sys_updated_on>
+        <table>x_avepo_cloud_gove_create_site_collection</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

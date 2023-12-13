@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>additional_admin</field>
+        <global>true</global>
+        <messages/>
+        <name>Load Create Site Collection</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+   //Type appropriate comment here, and begin script below
+	
+	try{
+		if(!g_form.isNewRecord())
+		{
+			var fields = g_form.getEditableFields();
+			for (var x = 0; x < fields.length; x++) {
+				g_form.setReadOnly(fields[x], true);
+			}
+		}
+		//g_form.addInfoMessage('Loading services...');
+		//var ga = new GlideAjax('GetServiceNameAndId');
+		//ga.addParam('sysparm_name', 'getServices');
+		//ga.addParam('sysparm_serviceType', '1');
+		//ga.getXML(servicesParse);
+	}	
+	catch(ex)
+	{
+		g_form.addErrorMessage(ex);
+	}	
+}
+function servicesParse(response){
+	try{
+		var answer = response.responseXML.documentElement.getAttribute("answer");
+		var services = JSON.parse(answer);
+
+		for(var i =0; i<services.length; i++)
+		{
+			g_form.addOption('service', services[i].Name,services[i].Name);
+		}
+		g_form.clearMessages();
+		g_form.addInfoMessage('Successfully loaded services.');		
+	}
+	catch(ex){
+		g_form.addErrorMessage(ex);
+	}
+}
+function addTimeZoneOption()
+{
+	g_form.addOption('time_zone', 39, '(UTC-12:00) International Date Line West');
+	g_form.addOption('time_zone', 95, '(UTC-11:00) Coordinated Universal Time-11');
+	g_form.addOption('time_zone', 15, '(UTC-10:00) Hawaii');
+	g_form.addOption('time_zone', 14, '(UTC-09:00) Alaska');
+	g_form.addOption('time_zone', 78, '(UTC-08:00) Baja California');
+	g_form.addOption('time_zone', 13, '(UTC-08:00) Pacific Time (US and Canada)');
+	g_form.addOption('time_zone', 38, '(UTC-07:00) Arizona');
+	g_form.addOption('time_zone', 77, '(UTC-07:00) Chihuahua, La Paz, Mazatlan');
+	g_form.addOption('time_zone', 12, '(UTC-07:00) Mountain Time (US and Canada)');
+	g_form.addOption('time_zone', 55, '(UTC-06:00) Central America');
+	g_form.addOption('time_zone', 11, '(UTC-06:00) Central Time (US and Canada)');
+	g_form.addOption('time_zone', 37, '(UTC-06:00) Guadalajara, Mexico City, Monterrey');
+	g_form.addOption('time_zone', 36, '(UTC-06:00) Saskatchewan');
+	g_form.addOption('time_zone', 35, '(UTC-05:00) Bogota, Lima, Quito');
+	g_form.addOption('time_zone', 10, '(UTC-05:00) Eastern Time (US and Canada)');
+	g_form.addOption('time_zone', 34, '(UTC-05:00) Indiana (East)');
+	g_form.addOption('time_zone', 88, '(UTC-04:30) Caracas');
+	g_form.addOption('time_zone', 91, '(UTC-04:00) Asuncion');
+	g_form.addOption('time_zone', 9, '(UTC-04:00) Atlantic Time (Canada)');
+	g_form.addOption('time_zone', 81, '(UTC-04:00) Cuiaba');
+	g_form.addOption('time_zone', 33, '(UTC-04:00) Georgetown, La Paz, Manaus, San Juan');
+	g_form.addOption('time_zone', 65, '(UTC-04:00) Santiago');
+	g_form.addOption('time_zone', 28, '(UTC-03:30) Newfoundland');
+	g_form.addOption('time_zone', 8, '(UTC-03:00) Brasilia');
+	g_form.addOption('time_zone', 85, '(UTC-03:00) Buenos Aires');
+	g_form.addOption('time_zone', 32, '(UTC-03:00) Cayenne, Fortaleza');
+	g_form.addOption('time_zone', 60, '(UTC-03:00) Greenland');
+	g_form.addOption('time_zone', 90, '(UTC-03:00) Montevideo');
+	g_form.addOption('time_zone', 103, '(UTC-03:00) Salvador');
+	g_form.addOption('time_zone', 96, '(UTC-02:00) Coordinated Universal Time-02');
+	g_form.addOption('time_zone', 30, '(UTC-02:00) Mid-Atlantic');
+	g_form.addOption('time_zone', 29, '(UTC-01:00) Azores');
+	g_form.addOption('time_zone', 53, '(UTC-01:00) Cabo Verde');
+	g_form.addOption('time_zone', 86, '(UTC) Casablanca');
+	g_form.addOption('time_zone', 93, '(UTC) Coordinated Universal Time');
+	g_form.addOption('time_zone', 2, '(UTC) Dublin, Edinburgh, Lisbon, London');
+	g_form.addOption('time_zone', 31, '(UTC) Monrovia, Reykjavik');
+	g_form.addOption('time_zone', 4, '(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna');
+	g_form.addOption('time_zone', 6, '(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague');
+	g_form.addOption('time_zone', 3, '(UTC+01:00) Brussels, Copenhagen, Madrid, Paris');
+	g_form.addOption('time_zone', 57, '(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb');
+	g_form.addOption('time_zone', 69, '(UTC+01:00) West Central Africa');
+	g_form.addOption('time_zone', 83, '(UTC+01:00) Windhoek');
+	g_form.addOption('time_zone', 79, '(UTC+02:00) Amman');
+	g_form.addOption('time_zone', 5, '(UTC+02:00) Athens, Bucharest, Istanbul');
+	g_form.addOption('time_zone', 80, '(UTC+02:00) Beirut');
+	g_form.addOption('time_zone', 49, '(UTC+02:00) Cairo');
+	g_form.addOption('time_zone', 98, '(UTC+02:00) Damascus');
+	g_form.addOption('time_zone', 50, '(UTC+02:00) Harare, Pretoria');
+	g_form.addOption('time_zone', 59, '(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius');
+	g_form.addOption('time_zone', 101, '(UTC+02:00) Istanbul');
+	g_form.addOption('time_zone', 27, '(UTC+02:00) Jerusalem');
+	g_form.addOption('time_zone', 7, '(UTC+02:00) Minsk (old)');
+	g_form.addOption('time_zone', 104, '(UTC+02:00) E. Europe');
+	g_form.addOption('time_zone', 100, '(UTC+02:00) Kaliningrad (RTZ 1)');
+	g_form.addOption('time_zone', 26, '(UTC+03:00) Baghdad');
+	g_form.addOption('time_zone', 74, '(UTC+03:00) Kuwait, Riyadh');
+	g_form.addOption('time_zone', 109, '(UTC+03:00) Minsk');
+	g_form.addOption('time_zone', 51, '(UTC+03:00) Moscow, St. Petersburg, Volgograd (RTZ 2)');
+	g_form.addOption('time_zone', 56, '(UTC+03:00) Nairobi');
+	g_form.addOption('time_zone', 25, '(UTC+03:30) Tehran');
+	g_form.addOption('time_zone', 24, '(UTC+04:00) Abu Dhabi, Muscat');
+	g_form.addOption('time_zone', 54, '(UTC+04:00) Baku');
+	g_form.addOption('time_zone', 106, '(UTC+04:00) Izhevsk, Samara (RTZ 3)');
+	g_form.addOption('time_zone', 89, '(UTC+04:00) Port Louis');
+	g_form.addOption('time_zone', 82, '(UTC+04:00) Tbilisi');
+	g_form.addOption('time_zone', 84, '(UTC+04:00) Yerevan');
+	g_form.addOption('time_zone', 48, '(UTC+04:30) Kabul');
+	g_form.addOption('time_zone', 58, '(UTC+05:00) Ekaterinburg (RTZ 4)');
+	g_form.addOption('time_zone', 87, '(UTC+05:00) Islamabad, Karachi');
+	g_form.addOption('time_zone', 47, '(UTC+05:00) Tashkent');
+	g_form.addOption('time_zone', 23, '(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi');
+	g_form.addOption('time_zone', 66, '(UTC+05:30) Sri Jayawardenepura');
+	g_form.addOption('time_zone', 62, '(UTC+05:45) Kathmandu');
+	g_form.addOption('time_zone', 71, '(UTC+06:00) Astana');
+	g_form.addOption('time_zone', 102, '(UTC+06:00) Dhaka');
+	g_form.addOption('time_zone', 46, '(UTC+06:00) Novosibirsk (RTZ 5)');
+	g_form.addOption('time_zone', 61, '(UTC+06:30) Yangon (Rangoon)');
+	g_form.addOption('time_zone', 22, '(UTC+07:00) Bangkok, Hanoi, Jakarta');
+	g_form.addOption('time_zone', 64, '(UTC+07:00) Krasnoyarsk (RTZ 6)');
+	g_form.addOption('time_zone', 45, '(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi');
+	g_form.addOption('time_zone', 63, '(UTC+08:00) Irkutsk (RTZ 7)');
+	g_form.addOption('time_zone', 21, '(UTC+08:00) Kuala Lumpur, Singapore');
+	g_form.addOption('time_zone', 73, '(UTC+08:00) Perth');
+	g_form.addOption('time_zone', 75, '(UTC+08:00) Taipei');
+	g_form.addOption('time_zone', 94, '(UTC+08:00) Ulaanbaatar');
+	g_form.addOption('time_zone', 20, '(UTC+09:00) Osaka, Sapporo, Tokyo');
+	g_form.addOption('time_zone', 72, '(UTC+09:00) Seoul');
+	g_form.addOption('time_zone', 70, '(UTC+09:00) Yakutsk (RTZ 8)');
+	g_form.addOption('time_zone', 19, '(UTC+09:30) Adelaide');
+	g_form.addOption('time_zone', 44, '(UTC+09:30) Darwin');
+	g_form.addOption('time_zone', 18, '(UTC+10:00) Brisbane');
+	g_form.addOption('time_zone', 76, '(UTC+10:00) Canberra, Melbourne, Sydney');
+	g_form.addOption('time_zone', 43, '(UTC+10:00) Guam, Port Moresby');
+	g_form.addOption('time_zone', 42, '(UTC+10:00) Hobart');
+	g_form.addOption('time_zone', 99, '(UTC+10:00) Magadan');
+	g_form.addOption('time_zone', 68, '(UTC+10:00) Vladivostok, Magadan (RTZ 9)');
+	g_form.addOption('time_zone', 107, '(UTC+11:00) Chokurdakh (RTZ 10)');
+	g_form.addOption('time_zone', 41, '(UTC+11:00) Solomon Is., New Caledonia');
+	g_form.addOption('time_zone', 108, '(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky (RTZ 11)');
+	g_form.addOption('time_zone', 17, '(UTC+12:00) Auckland, Wellington');
+	g_form.addOption('time_zone', 97, '(UTC+12:00) Coordinated Universal Time+12');
+	g_form.addOption('time_zone', 40, '(UTC+12:00) Fiji');
+	g_form.addOption('time_zone', 92, '(UTC+12:00) Petropavlovsk-Kamchatsky - Old');
+	g_form.addOption('time_zone', 67, '(UTC+13:00) Nuku\'alofa');
+	g_form.addOption('time_zone', 16, '(UTC+13:00) Samoa');
+}
+
+
+]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-20 06:50:19</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>388a3e42db615b00379a6be3ca96195e</sys_id>
+        <sys_mod_count>77</sys_mod_count>
+        <sys_name>Load Create Site Collection</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_script_client_388a3e42db615b00379a6be3ca96195e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-08-15 03:59:30</sys_updated_on>
+        <table>x_avepo_cloud_gove_create_site_collection</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_avepo_cloud_gove.GetServiceSettings</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetServiceSettings</name>
+        <script><![CDATA[var GetServiceSettings = Class.create();
+GetServiceSettings.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	getServiceSettings: function(){
+		var name = this.getParameter('sysparm_service_name');
+		try
+		{
+			var serviceDetails = this._getServiceDetails(name);
+			if(serviceDetails && global.JSON.parse(serviceDetails))
+			{
+				return serviceDetails;
+			}
+		}
+		catch(ex)
+		{
+			gs.warn('Cannot get service details from table. Exception: '+ ex);
+		}
+		var id = this._getServiceId(name);
+		//gs.info('ajax :'+type);
+		var sm = new sn_ws.RESTMessageV2("x_avepo_cloud_gove.Logon", "Post");
+		sm.setStringParameter('data_center_url', gs.getProperty('x_avepo_cloud_gove.data_center_url'));
+		var logonInfo = {"userName": gs.getProperty("x_avepo_cloud_gove.gao_user_name"), "passWord": gs.getProperty("x_avepo_cloud_gove.gao_user_password")};
+		sm.setRequestBody(global.JSON.stringify(logonInfo));
+		var response = sm.execute();
+		var token = response.getBody();
+
+
+		//Get Service Settings
+		sm = new sn_ws.RESTMessageV2("x_avepo_cloud_gove.Get Service By Id", "GET");
+		sm.setStringParameter('data_center_url', gs.getProperty('x_avepo_cloud_gove.data_center_url'));
+		sm.setStringParameter("access_token", token.replace(/\"/g,''));
+		sm.setStringParameter("id", id);
+		response = sm.execute();
+		var service = global.JSON.parse(response.getBody());
+		gs.info(global.JSON.stringify(service));
+		service.APIRequest = null;
+		//convert the users to sys_id
+		switch(service.Type)
+		{
+			case 1:
+				service.PrimaryAdminInfo = this._getUserId(service.PrimaryAdminInfo);
+				service.AdditionalAdmin = this._getUserId(service.AdditionalAdmin);
+				service.PrimaryContactInfo = this._getUserId(service.PrimaryContactInfo);
+				service.SecondaryContactInfo = this._getUserId(service.SecondaryContactInfo);
+				break;
+			case 120:
+				service.PrimaryContact = this._getUserId(service.PrimaryContact);
+				service.SecondaryContact = this._getUserId(service.SecondaryContact);
+				service.GroupOwners = this._getUserId(service.GroupOwners?service.GroupOwners.join(';'):null);
+				service.GroupMembers = this._getUserId(service.GroupMembers?service.GroupMembers.join(';'):null);
+				break;
+		}
+		var details = global.JSON.stringify(service);
+		this._updateServiceDetails(name, details);
+		return details;
+		
+	},
+	_updateServiceDetails: function(id, details)
+	{
+		var gr = new GlideRecordSecure("x_avepo_cloud_gove_service");
+		gr.addQuery('sys_id', id);
+		gr.query();
+		while(gr.next()){ 
+			gr.details = details;
+			gr.update();
+			gs.info('update service details. service: '+ gr.service_name);
+			break;
+		}
+	},
+	_getServiceDetails: function(id)
+	{
+		var gr = new GlideRecordSecure("x_avepo_cloud_gove_service");
+		gr.addQuery('sys_id', id);
+		gr.query();
+		var result = '';
+		while(gr.next()){ 
+			result = gr.details.toString();
+			break;
+		}
+		return result;
+	},
+	_getServiceId: function(id)
+	{
+		var gr = new GlideRecordSecure("x_avepo_cloud_gove_service");
+		gr.addQuery('sys_id', id);
+		gr.query();
+		var result = '';
+		while(gr.next()){ 
+			result = gr.service_id.toString();
+			break;
+		}
+		return result;
+	},
+	_getUserId: function(name){
+		if(!name)
+		{
+			return name;
+		}
+		var list = name.split(';');
+		var gr = new GlideRecordSecure("sys_user");
+		var query = gr.addQuery('user_name',list[0]); 
+		if(list.length > 1)
+		{
+			for(var i = 1; i < list.length; i++)
+			{
+				if(list[i])
+				{
+					query.addOrCondition('user_name',list[i]); 
+				}
+			}
+		}
+		gr.query();
+		var result = [];
+		while(gr.next()){ 
+			result.push(gr.sys_id);
+		}
+		return result.join();
+	},
+    type: 'GetServiceSettings'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-21 05:30:08</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>2d129ac0db1a9300b723e536ca9619f5</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>GetServiceSettings</sys_name>
+        <sys_package display_value="AvePoint Cloud Governance" source="x_avepo_cloud_gove">e8a36bdddb2dd700b723e536ca96193c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AvePoint Cloud Governance">e8a36bdddb2dd700b723e536ca96193c</sys_scope>
+        <sys_update_name>sys_script_include_2d129ac0db1a9300b723e536ca9619f5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-09-03 06:43:55</sys_updated_on>
+    </sys_script_include>
+</record_update>
